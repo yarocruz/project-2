@@ -13,6 +13,11 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/signup.html"));
   });
 
+  app.get("/test", function(req, res) {
+    // This route for now is testing the handlebars files
+    res.render("index", {});
+  });
+
   app.get("/login", function(req, res) {
     // If the user already has an account send them to the members page
     if (req.user) {
