@@ -15,7 +15,7 @@ module.exports = function(app) {
 
   app.get("/test", function(req, res) {
     // This route for now is testing the handlebars files
-    res.render("index", {});
+    res.render("home");
   });
 
   app.get("/login", function(req, res) {
