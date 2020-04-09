@@ -1,50 +1,21 @@
     
     <div class="grid sm:grid-cols-1 md:grid-cols-3 gap-4">
+        {{#each podcasts}} {{!--  for each podcast that is found --}}
         {{!--  CARD BLOCK WITH PODCAST INFO --}}
         <div class="md:max-w-sm flex flex-col items-center rounded overflow-hidden shadow-lg hover:shadow-xl">
-            <img class="w-32 mt-4" src="/img/rectangle.jpg" alt="Sunset in the mountains">
+            <img class="w-32 mt-4" src="{{thumbnail}}" alt="Sunset in the mountains"> {{!--  get the thumbinail --}}
             <div class="px-6 py-4">
-                <div class="font-bold text-xl text-center mb-2">Podcast Title</div>
-                <p class="text-gray-700 text-base">Lorem ipsum dolor sit amet.</p>
+                <div class="font-bold text-xl text-center mb-2">{{title}}</div> {{!--  get the title --}}
+                <p class="text-gray-700 text-base">{{removeTagsFromString description}}</p>  {{!--  get the description --}}
             </div>
             <div>
                 <span class="inline-block px-1 py-1 text-sm font-semibold text-blue-700 hover:text-blue-900  mr-2"><a href="#">iTunes</a></span>
-                <span class="inline-block px-1 py-1 text-sm font-semibold text-blue-700 hover:text-blue-900 mr-2"><a href="#">RSS</a></span>
-                <span class="inline-block px-1 py-1 text-sm font-semibold text-blue-700 hover:text-blue-900"><a href="#">Website</a></span>
+                <span class="inline-block px-1 py-1 text-sm font-semibold text-blue-700 hover:text-blue-900 mr-2"><a href="{{rss}}">RSS</a></span> {{!--  get the RSS --}}
+                <span class="inline-block px-1 py-1 text-sm font-semibold text-blue-700 hover:text-blue-900"><a href="{{website}}">Website</a></span> {{!--  get the website link --}}
             </div>
 
             <div class="transition duration-500 ease-in-out cursor-pointer rounded bg-blue-500 hover:bg-blue-400 px-3 py-1 my-4 text-white text-sm">Add to Collection</div>
         </div>
+        {{/each}}
 
-        {{!--  CARD BLOCK WITH PODCAST INFO --}}
-        <div class="md:max-w-sm flex flex-col items-center rounded overflow-hidden shadow-lg hover:shadow-xl">
-            <img class="w-32 mt-4" src="/img/rectangle.jpg" alt="Sunset in the mountains">
-            <div class="px-6 py-4">
-                <div class="font-bold text-xl text-center mb-2">Podcast Title</div>
-                <p class="text-gray-700 text-base">Lorem ipsum dolor sit amet.</p>
-            </div>
-            <div>
-                <span class="inline-block px-1 py-1 text-sm font-semibold text-blue-700 hover:text-blue-900  mr-2"><a href="#">iTunes</a></span>
-                <span class="inline-block px-1 py-1 text-sm font-semibold text-blue-700 hover:text-blue-900 mr-2"><a href="#">RSS</a></span>
-                <span class="inline-block px-1 py-1 text-sm font-semibold text-blue-700 hover:text-blue-900"><a href="#">Website</a></span>
-            </div>
-
-            <div class="transition duration-500 ease-in-out cursor-pointer rounded bg-blue-500 hover:bg-blue-400 px-3 py-1 my-4 text-white text-sm">Add to Collection</div>
-        </div>
-
-        {{!--  CARD BLOCK WITH PODCAST INFO --}}
-        <div class="md:max-w-sm flex flex-col items-center rounded overflow-hidden shadow-lg hover:shadow-xl">
-            <img class="w-32 mt-4" src="/img/rectangle.jpg" alt="Sunset in the mountains">
-            <div class="px-6 py-4">
-                <div class="font-bold text-xl text-center mb-2">Podcast Title</div>
-                <p class="text-gray-700 text-base">Lorem ipsum dolor sit amet.</p>
-            </div>
-            <div>
-                <span class="inline-block px-1 py-1 text-sm font-semibold text-blue-700 hover:text-blue-900  mr-2"><a href="#">iTunes</a></span>
-                <span class="inline-block px-1 py-1 text-sm font-semibold text-blue-700 hover:text-blue-900 mr-2"><a href="#">RSS</a></span>
-                <span class="inline-block px-1 py-1 text-sm font-semibold text-blue-700 hover:text-blue-900"><a href="#">Website</a></span>
-            </div>
-
-            <div class="transition duration-500 ease-in-out cursor-pointer rounded bg-blue-500 hover:bg-blue-400 px-3 py-1 my-4 text-white text-sm">Add to Collection</div>
-        </div>
     </div>
