@@ -13,9 +13,24 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/signup.html"));
   });
 
-  app.get("/test", function(req, res) {
+  app.get("/home", function(req, res) {
     // This route for now is testing the handlebars files
     res.render("home");
+  });
+
+  app.get("/collections", function(req, res) {
+    // This route for now is testing the handlebars files
+    res.render("collections");
+  });
+
+  app.get("/addCollectionForm", function(req, res) {
+    // This route for now is testing the handlebars files
+    res.render("addCollectionForm");
+  });
+
+  app.get("/oneCollection", function(req, res) {
+    // This route for now is testing the handlebars files
+    res.render("oneCollection");
   });
 
   app.get("/login", function(req, res) {
