@@ -1,9 +1,9 @@
 {
 	"development": {
-		"username": "root",
-		"password": "root",
-		"database": "passport_demo",
-		"host": "127.0.0.1",
+		"username": "process.env.USER",
+		"password": "process.env.PASS",
+		"database": "process.env.DATABASE",
+		"host": "localhost",
 		"dialect": "mysql"
 	},
 	"test": {
