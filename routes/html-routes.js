@@ -1,3 +1,6 @@
+// Requiring Handlebars to create a custome Helper function
+const Handlebars = require("handlebars");
+
 // Requiring AXIOS to make requests to LISTEN NOTES API
 const axios = require("axios");
 // Requiring path to so we can use relative routes to our HTML files
@@ -28,6 +31,12 @@ module.exports = app => {
       let hbsObject = {
         podcasts: response.data.podcasts
       };
+      Handlebars.registerHelper("removeTagsFromString", string => {
+        return string
+          .replace(/<[^>]*>/g, " ")
+          .replace(/\s{2,}/g, " ")
+          .trim();
+      });
       //console.log(podcasts.results);
       res.render("home", hbsObject);
     });
