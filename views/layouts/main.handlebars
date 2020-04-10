@@ -33,8 +33,7 @@
         
 		{{{ body }}}
 
-        </div>
-                                        
+        </div>             
                                 
         <script
             src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -46,18 +45,7 @@
 
                     console.log($("#search").val());
 
-                    $.ajax({
-                        type: 'GET',
-                        url: 'home', // Ajax route name
-                        contentType: 'application/json',
-                        data: {
-                            searchValue: $("#search").val()
-                        }
-                    }).done(function (response) { // server response
-                    }).fail(function () {
-
-                    });
-                                
+                    window.location.replace("/home?searchValue=" + $("#search").val());
             }
         </script>
 	</body>

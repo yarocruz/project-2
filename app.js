@@ -47,6 +47,7 @@ function search(value = "") {
           podcasts.push(pc);
         }
         resolve(podcasts);
+        console.log(podcasts);
       }
     });
   });
