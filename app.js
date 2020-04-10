@@ -6,29 +6,24 @@ const app = express();
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-
-
 function search() {
-  
-
   return new Promise((resolve, reject) => {
-
     const podcasts = [];
 
     const req = unirest(
       "GET",
       "https://listen-api.listennotes.com/api/v2/search?q=coding&sort_by_date=0&type=podcast&offset=0&len_min=10&len_max=30&genre_ids=68%2C82&language=English"
     );
-  
+
     req.headers({
       "x-ListenApi-key": "1ce54c3a84674c4fb7adfb59a5a5b744"
     });
-  
+
     req.end(function(res) {
       if (res.error) {
         throw new Error(res.error);
       }
-      for (i = 0; i < 10; i++) {
+      for (i = 0; i < 9; i++) {
         const resp = res.body.results[i];
         let pc = {
           image: resp.image,
@@ -39,17 +34,11 @@ function search() {
           link: resp.website
         };
         podcasts.push(pc);
+        console.log(resp);
       }
-      
       resolve(podcasts);
-      
     });
-  
-
   });
-
-  
-  
 }
 
 module.exports = { search };

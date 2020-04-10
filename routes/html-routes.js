@@ -5,7 +5,6 @@ var { search } = require("../app");
 // Requiring our custom middleware for checking if a user is logged in
 var isAuthenticated = require("../config/middleware/isAuthenticated");
 
-
 module.exports = function(app) {
   app.get("/", function(req, res) {
     // If the user already has an account send them to the members page
@@ -17,11 +16,9 @@ module.exports = function(app) {
 
   app.get("/home", function(req, res) {
     // This route for now is testing the handlebars files
-    search().then( podcasts => {
-      console.log("resolved", podcasts);
-      res.render("home", { podcasts : podcasts });
+    search().then(podcasts => {
+      res.render("home", { podcasts: podcasts });
     });
-
   });
 
   app.get("/collections", function(req, res) {

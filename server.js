@@ -1,5 +1,4 @@
 // Requiring necessary npm packages
-const unirest = require("unirest");
 const express = require("express");
 const session = require("express-session");
 const exphbs = require("express-handlebars");
