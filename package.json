@@ -25,7 +25,8 @@
 		"passport": "^0.4.0",
 		"passport-local": "^1.0.0",
 		"sequelize": "^5.8.6",
-		"tailwindcss": "^1.2.0"
+		"tailwindcss": "^1.2.0",
+		"unirest": "^0.6.0"
 	},
 	"devDependencies": {
 		"chai": "^4.1.2",
