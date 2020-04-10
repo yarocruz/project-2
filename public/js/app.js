@@ -1,12 +1,7 @@
 var unirest = require("unirest");
 
 function search() {
-  const images = [];
-  const titles = [];
-  const desc = [];
-  const itunes = [];
-  const RSS = [];
-  const links = [];
+  const podcasts = [];
 
   var req = unirest(
     "GET",
@@ -23,13 +18,17 @@ function search() {
     }
     for (i = 0; i < 10; i++) {
       const resp = res.body.results[i];
-      images.push(resp.image);
-      titles.push(resp.title_original);
-      desc.push(resp.description_original);
-      itunes.push(resp.itunes_id);
-      RSS.push(resp.rss);
-      links.push(resp.website);
+      let pc = {
+        image: resp.image,
+        title: resp.title_original,
+        desc: resp.description_original,
+        itunes: resp.itunes_id,
+        RSS: resp.rss,
+        links: resp.website
+      };
+      podcasts.push(pc);
     }
+    console.log(podcasts);
   });
 }
 
