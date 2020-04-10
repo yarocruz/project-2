@@ -6,20 +6,20 @@ const app = express();
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-function search() {
-  let input;
-
-  if (input === undefined) {
-    input = "coding";
-  }
-
+function search(value = "") {
   return new Promise((resolve, reject) => {
     const podcasts = [];
+
+    if (value === "") {
+      value = "coding";
+    }
+
+    console.log("https://listen-api.listennotes.com/api/v2/search?q=" + value);
 
     const req = unirest(
       "GET",
       "https://listen-api.listennotes.com/api/v2/search?q=" +
-        input +
+        value +
         "&sort_by_date=0&type=podcast&offset=0&len_min=10&len_max=30&genre_ids=68%2C82&language=English"
     );
 
@@ -31,20 +31,23 @@ function search() {
       if (res.error) {
         throw new Error(res.error);
       }
-      for (i = 0; i < 9; i++) {
-        const resp = res.body.results[i];
-        let pc = {
-          image: resp.image,
-          title: resp.title_original,
-          desc: resp.description_original,
-          itunes: resp.itunes_id,
-          RSS: resp.rss,
-          link: resp.website
-        };
-        podcasts.push(pc);
-        console.log(resp);
+      if (res.body.results.length === 0) {
+        resolve(null);
+      } else {
+        for (i = 0; i < 9; i++) {
+          const resp = res.body.results[i];
+          let pc = {
+            image: resp.image,
+            title: resp.title_original,
+            desc: resp.description_original,
+            itunes: resp.itunes_id,
+            RSS: resp.rss,
+            link: resp.website
+          };
+          podcasts.push(pc);
+        }
+        resolve(podcasts);
       }
-      resolve(podcasts);
     });
   });
 }

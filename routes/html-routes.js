@@ -15,8 +15,8 @@ module.exports = app => {
   });
 
   app.get("/home", function(req, res) {
-    // This route for now is testing the handlebars files
-    search().then(podcasts => {
+    // This route for now is testing the handlebars files\
+    search(req.query.searchValue).then(podcasts => {
       res.render("home", { podcasts: podcasts });
     });
   });
