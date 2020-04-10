@@ -1,9 +1,15 @@
-var unirest = require("unirest");
+const unirest = require("unirest");
+const express = require("express");
+const exphbs = require("express-handlebars");
+const app = express();
+
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
 
 function search() {
   const podcasts = [];
 
-  var req = unirest(
+  const req = unirest(
     "GET",
     "https://listen-api.listennotes.com/api/v2/search?q=coding&sort_by_date=0&type=podcast&offset=0&len_min=10&len_max=30&genre_ids=68%2C82&language=English"
   );
@@ -24,11 +30,13 @@ function search() {
         desc: resp.description_original,
         itunes: resp.itunes_id,
         RSS: resp.rss,
-        links: resp.website
+        link: resp.website
       };
       podcasts.push(pc);
     }
-    console.log(podcasts);
+    app.get("/home", function(req, res) {
+      res.render("home", podcasts[0]);
+    });
   });
 }
 

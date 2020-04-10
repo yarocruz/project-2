@@ -1,4 +1,5 @@
 // Requiring necessary npm packages
+const unirest = require("unirest");
 const express = require("express");
 const session = require("express-session");
 const exphbs = require("express-handlebars");
@@ -27,9 +28,9 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Requiring our routes
+require("./app.js");
 require("./routes/html-routes.js")(app);
 require("./routes/api-routes.js")(app);
-require("./public/js/app.js");
 
 // Syncing our database and logging a message to the user upon success
 db.sequelize.sync().then(function() {
