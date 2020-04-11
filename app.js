@@ -29,7 +29,7 @@ function search(value = "") {
       if (res.error) {
         throw new Error(res.error);
       }
-      if (res.body.results[0].image === undefined) {
+      if (res.body.results === undefined) {
         resolve(null);
       } else {
         console.log(res.body.results);
