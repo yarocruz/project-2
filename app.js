@@ -27,6 +27,7 @@ function search(value = "") {
 
     req.end(res => {
       if (res.error) {
+        reject;
         throw new Error(res.error);
       }
       if (res.body.results === undefined) {
