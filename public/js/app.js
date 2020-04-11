@@ -1,10 +1,4 @@
 const unirest = require("unirest");
-const express = require("express");
-const exphbs = require("express-handlebars");
-const app = express();
-
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-app.set("view engine", "handlebars");
 
 function search(value = "") {
   return new Promise((resolve, reject) => {
@@ -18,7 +12,7 @@ function search(value = "") {
       "GET",
       "https://listen-api.listennotes.com/api/v2/search?q=" +
         value +
-        "&sort_by_date=0&type=podcast&offset=0&language=English"
+        "&type=podcast&language=English"
     );
 
     req.headers({
@@ -27,6 +21,7 @@ function search(value = "") {
 
     req.end(res => {
       if (res.error) {
+        reject;
         throw new Error(res.error);
       }
       if (res.body.results === undefined) {
