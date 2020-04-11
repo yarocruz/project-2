@@ -21,16 +21,17 @@
       </label>
 
       <div class="flex items-center">
-          <img class="pr-1" src="/img/star.png" alt="star rating">
-          <img class="pr-1" src="/img/star.png" alt="star rating">
-          <img class="pr-1" src="/img/star.png" alt="star rating">
-          <img class="pr-1" src="/img/star.png" alt="star rating">
-          <img src="/img/star.png" alt="star rating">
-      </div>
+        <fieldset class="rating">
+          <input type="radio" id="star5" name="rating" value="5" data-value="5" /><label class="full" for="star5" title="Awesome - 5 stars"></label>
+          <input type="radio" id="star4" name="rating" value="4" data-value="5" /><label class="full" for="star4" title="Pretty good - 4 stars"></label>
+          <input type="radio" id="star3" name="rating" value="3" data-value="5" /><label class="full" for="star3" title="Meh - 3 stars"></label>
+          <input type="radio" id="star2" name="rating" value="2" data-value="5" /><label class="full" for="star2" title="Kinda bad - 2 stars"></label>
+          <input type="radio" id="star1" name="rating" value="1" data-value="5" /><label class="full" for="star1" title="Sucks big time - 1 star"></label>
+        </fieldset>
     </div>
 
     <div class="flex items-center justify-between">
-      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 my-3 rounded focus:outline-none focus:shadow-outline" type="button">
           Save Collection
       </button>
     </div>
