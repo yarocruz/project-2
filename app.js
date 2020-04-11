@@ -18,7 +18,7 @@ function search(value = "") {
       "GET",
       "https://listen-api.listennotes.com/api/v2/search?q=" +
         value +
-        "&sort_by_date=0&type=podcast&offset=0&len_min=10&len_max=30&genre_ids=68%2C82&language=English"
+        "&sort_by_date=0&type=podcast&offset=0&language=English"
     );
 
     req.headers({
