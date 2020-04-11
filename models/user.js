@@ -31,5 +31,18 @@ module.exports = function(sequelize, DataTypes) {
       null
     );
   });
+
+  // Adding hooks to collections and reviews
+  User.associate = function(models) {
+    // Associating User with Collections and Reviews
+    // When an User is deleted, also delete any associated Collections and Reviews
+    User.hasMany(models.Collection, {
+      onDelete: "cascade"
+    });
+    User.hasMany(models.Review, {
+      onDelete: "cascade"
+    });
+  };
+
   return User;
 };
