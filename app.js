@@ -14,8 +14,6 @@ function search(value = "") {
       value = "coding";
     }
 
-    console.log("https://listen-api.listennotes.com/api/v2/search?q=" + value);
-
     const req = unirest(
       "GET",
       "https://listen-api.listennotes.com/api/v2/search?q=" +
@@ -31,10 +29,11 @@ function search(value = "") {
       if (res.error) {
         throw new Error(res.error);
       }
-      if (res.body.results.length === 0) {
+      if (res.body.results[0].image === undefined) {
         resolve(null);
       } else {
-        for (i = 0; i < 9; i++) {
+        console.log(res.body.results);
+        for (i = 0; i < res.body.results.length; i++) {
           const resp = res.body.results[i];
           let pc = {
             image: resp.image,
@@ -47,7 +46,6 @@ function search(value = "") {
           podcasts.push(pc);
         }
         resolve(podcasts);
-        console.log(podcasts);
       }
     });
   });
