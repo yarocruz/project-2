@@ -1,10 +1,6 @@
-// Requiring Handlebars to create a custome Helper function
-const Handlebars = require("handlebars");
-
-// Requiring AXIOS to make requests to LISTEN NOTES API
-const axios = require("axios");
 // Requiring path to so we can use relative routes to our HTML files
 var path = require("path");
+var { search } = require("../app");
 
 // Requiring our custom middleware for checking if a user is logged in
 var isAuthenticated = require("../config/middleware/isAuthenticated");
@@ -18,27 +14,10 @@ module.exports = app => {
     res.sendFile(path.join(__dirname, "../public/signup.html"));
   });
 
-  // ----------------------------------------------------------------------
-  // TEST ROUTES FOR NOW - THIS CAN BE CHANGED LATER WHEN WE START GETTING RID OF AUTH SAMPLE PROJECT
-  app.get("/home", (req, res) => {
-    axios({
-      method: "get",
-      url:
-        "https://listen-api.listennotes.com/api/v2/best_podcasts?genre_id=107&page=2&region=us&safe_mode=0'",
-      headers: { "X-ListenAPI-Key": "1ce54c3a84674c4fb7adfb59a5a5b744" }
-    }).then(response => {
-      console.log(response.data.podcasts);
-      let hbsObject = {
-        podcasts: response.data.podcasts
-      };
-      Handlebars.registerHelper("removeTagsFromString", string => {
-        return string
-          .replace(/<[^>]*>/g, " ")
-          .replace(/\s{2,}/g, " ")
-          .trim();
-      });
-      //console.log(podcasts.results);
-      res.render("home", hbsObject);
+  app.get("/home", function(req, res) {
+    // This route for now is testing the handlebars files\
+    search(req.query.searchValue).then(podcasts => {
+      res.render("home", { podcasts: podcasts });
     });
   });
 
