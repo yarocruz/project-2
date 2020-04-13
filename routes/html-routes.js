@@ -35,6 +35,16 @@ module.exports = app => {
     // This route for now is testing the handlebars files
     res.render("oneCollection");
   });
+
+  app.get("/signin", (req, res) => {
+    // This route for now is testing the handlebars files
+    res.render("signin");
+  });
+
+  app.get("/signup", (req, res) => {
+    // This route for now is testing the handlebars files
+    res.render("signup");
+  });
   // ---------------------------------------------------------------------
   app.get("/login", (req, res) => {
     // If the user already has an account send them to the members page
