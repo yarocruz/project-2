@@ -43,3 +43,9 @@ label {
 /* lighten current selection */ .rating > input:checked ~ label:hover ~ label {
 	color: #ffed85;
 }
+
+/***** Styling the Read More Link *****/
+
+.morelink {
+	color: #4299e1;
+}

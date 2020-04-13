@@ -16,9 +16,7 @@ function search(value = "") {
 
     const req = unirest(
       "GET",
-      "https://listen-api.listennotes.com/api/v2/search?q=" +
-        value +
-        "&sort_by_date=0&type=podcast&offset=0&language=English"
+      `https://listen-api.listennotes.com/api/v2/search?q="${value}"&sort_by_date=0&type=podcast&offset=0&language=English`
     );
 
     req.headers({
@@ -39,7 +37,7 @@ function search(value = "") {
           let pc = {
             image: resp.image,
             title: resp.title_original,
-            desc: resp.description_original,
+            description: resp.description_original,
             itunes: resp.itunes_id,
             RSS: resp.rss,
             link: resp.website
