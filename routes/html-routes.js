@@ -1,11 +1,6 @@
 // Requiring path to so we can use relative routes to our HTML files
-<<<<<<< HEAD
-var path = require("path");
-var { search } = require("./utils/app");
-=======
 const path = require("path");
 const { search } = require("./utils/search");
->>>>>>> d7b72ca7ad3e16f72a4db6951b724b96f5ff8683
 
 // Requiring our custom middleware for checking if a user is logged in
 const isAuthenticated = require("../config/middleware/isAuthenticated");

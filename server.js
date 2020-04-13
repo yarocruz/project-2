@@ -30,10 +30,6 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Requiring our routes
-<<<<<<< HEAD
-require("./routes/utils/app.js");
-=======
->>>>>>> d7b72ca7ad3e16f72a4db6951b724b96f5ff8683
 require("./routes/html-routes.js")(app);
 require("./routes/api-routes.js")(app);
 
