@@ -10,9 +10,13 @@ function search(value = "") {
 
     const req = unirest(
       "GET",
+<<<<<<< HEAD:routes/utils/app.js
       "https://listen-api.listennotes.com/api/v2/search?q=" +
         value +
         "&type=podcast&language=English"
+=======
+      `https://listen-api.listennotes.com/api/v2/search?q="${value}"&sort_by_date=0&type=podcast&offset=0&language=English`
+>>>>>>> d7b72ca7ad3e16f72a4db6951b724b96f5ff8683:routes/utils/search.js
     );
 
     req.headers({
@@ -33,7 +37,7 @@ function search(value = "") {
           let pc = {
             image: resp.image,
             title: resp.title_original,
-            desc: resp.description_original,
+            description: resp.description_original,
             itunes: resp.itunes_id,
             RSS: resp.rss,
             link: resp.website
