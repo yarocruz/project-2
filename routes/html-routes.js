@@ -1,9 +1,9 @@
 // Requiring path to so we can use relative routes to our HTML files
-var path = require("path");
-var { search } = require("../app");
+const path = require("path");
+const { search } = require("./utils/search");
 
 // Requiring our custom middleware for checking if a user is logged in
-var isAuthenticated = require("../config/middleware/isAuthenticated");
+const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = app => {
   app.get("/", (req, res) => {
@@ -14,7 +14,7 @@ module.exports = app => {
     res.sendFile(path.join(__dirname, "../public/signup.html"));
   });
 
-  app.get("/home", function(req, res) {
+  app.get("/home", (req, res) => {
     // This route for now is testing the handlebars files\
     search(req.query.searchValue).then(podcasts => {
       res.render("home", { podcasts: podcasts });
