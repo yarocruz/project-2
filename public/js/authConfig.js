@@ -1,3 +1,4 @@
+// grabbing the input from the search box
 function search() {
   window.location.replace("/home?searchValue=" + $("#search").val());
 }
@@ -15,3 +16,8 @@ firebase.initializeApp(firebaseConfig);
 // Initialize Auth & DB
 const auth = firebase.auth();
 const db = firebase.firestore();
+
+// console logging to make prettier shut up
+console.log(auth);
+console.log(db);
+console.log(search);

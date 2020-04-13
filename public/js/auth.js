@@ -47,6 +47,7 @@ signupForm.addEventListener("submit", e => {
     const modal = document.querySelector("#modal-signup");
     M.Modal.getInstance(modal).close();
     signupForm.reset();
+    console.log(credentials);
   });
 });
 
@@ -65,6 +66,7 @@ loginForm.addEventListener("submit", e => {
     const modal = document.querySelector("#modal-login");
     M.Modal.getInstance(modal).close();
     loginForm.reset();
+    console.log(credentials);
   });
 });
 
