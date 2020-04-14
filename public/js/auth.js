@@ -10,6 +10,7 @@ function signup() {
   auth.createUserWithEmailAndPassword(email, password).then(credentials => {
     window.location.replace("/home");
     console.log("account created!");
+    console.log(credentials);
   });
 }
 // Signin
@@ -23,5 +24,9 @@ function login() {
   auth.signInWithEmailAndPassword(email, password).then(credentials => {
     window.location.replace("/home");
     console.log("Signed in!");
+    console.log(credentials);
   });
 }
+
+console.log(login);
+console.log(signup);
