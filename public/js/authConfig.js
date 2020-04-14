@@ -1,7 +1,3 @@
-// grabbing the input from the search box
-function search() {
-  window.location.replace("/home?searchValue=" + $("#search").val());
-}
 // Your web app's Firebase configuration
 var firebaseConfig = {
   apiKey: "AIzaSyB_1JiA2IifBGzjqKVv8js-csmXKRFjY6Q",
@@ -16,8 +12,3 @@ firebase.initializeApp(firebaseConfig);
 // Initialize Auth & DB
 const auth = firebase.auth();
 const db = firebase.firestore();
-
-// console logging to make prettier shut up
-console.log(auth);
-console.log(db);
-console.log(search);
