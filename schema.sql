@@ -2,4 +2,3 @@
 DROP DATABASE IF EXISTS poddler_db;
 -- Creates the "poddler_db" database --
 CREATE DATABASE poddler_db;
-
