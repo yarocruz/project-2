@@ -1,5 +1,5 @@
 // *********************************************************************************
-// api-routes.js - this file offers a set of routes for displaying and saving data to the db
+// user-api-routes.js - this file offers a set of routes for displaying and saving user data to the db
 // *********************************************************************************
 
 // Dependencies
@@ -11,7 +11,7 @@ const db = require("../models");
 // Routes
 // =============================================================
 module.exports = function(app) {
-  // GET route for getting all of the posts
+  // GET route for getting all of the users
   app.get("/api/users", (req, res) => {
     // Here we add an "include" property to our options in our findAll query
     // We set the value to an array of the models we want to include in a left outer join
@@ -21,6 +21,7 @@ module.exports = function(app) {
     }).then(dbUser => res.json(dbUser));
   });
 
+  // Get route for retrieving a single user
   app.get("/api/users/:id", (req, res) => {
     // Here we add an "include" property to our options in our findOne query
     // We set the value to an array of the models we want to include in a left outer join
@@ -33,10 +34,12 @@ module.exports = function(app) {
     }).then(dbUser => res.json(dbUser));
   });
 
+  // POST route for saving a new user
   app.post("/api/users", (req, res) => {
     db.User.create(req.body).then(dbUser => res.json(dbUser));
   });
 
+  // DELETE route for deleting users
   app.delete("/api/users/:id", (req, res) => {
     db.User.destroy({
       where: {

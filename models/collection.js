@@ -10,7 +10,9 @@ module.exports = function(sequelize, DataTypes) {
     podcastTitle: {
       type: DataTypes.STRING,
       allowNull: false,
-      len: [1]
+      validate: {
+        len: [1]
+      }
     }
   });
 
