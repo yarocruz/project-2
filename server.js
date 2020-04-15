@@ -39,6 +39,6 @@ require("./routes/review-api-routes.js")(app);
 // Syncing our database and logging a message to the user upon success
 db.sequelize.sync().then(() => {
   app.listen(PORT, () => {
-    console.log("http://localhost:%s/home", PORT);
+    console.log("http://localhost:%s/", PORT);
   });
 });
