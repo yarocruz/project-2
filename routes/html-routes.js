@@ -18,9 +18,9 @@ module.exports = app => {
   app.get("/collections", (req, res) => {
     // This route for now is testing the handlebars files
     axios
-      .get("http://localhost:8080/api/collections")
+      .get("http://localhost:8080/api/users")
       .then(response => {
-        //console.log(response.data);
+        console.log(response.data);
         const result = response.data.map(collection => {
           return collection;
         });
