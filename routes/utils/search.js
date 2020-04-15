@@ -25,7 +25,7 @@ function search(value = "") {
       if (res.body.results === undefined) {
         resolve(null);
       } else {
-        console.log(res.body.results);
+        //console.log(res.body.results);
         for (i = 0; i < res.body.results.length; i++) {
           const resp = res.body.results[i];
           let pc = {

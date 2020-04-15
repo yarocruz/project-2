@@ -9,6 +9,9 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
+// Setting Persistence ?
+firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION);
+
 // Initialize Auth & DB
 const auth = firebase.auth();
 const db = firebase.firestore();
