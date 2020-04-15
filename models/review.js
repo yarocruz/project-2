@@ -10,7 +10,9 @@ module.exports = (sequelize, DataTypes) => {
     review: {
       type: DataTypes.TEXT,
       allowNull: false,
-      len: [1]
+      validate: {
+        len: [1]
+      }
     },
     rating: {
       type: DataTypes.INTEGER,
