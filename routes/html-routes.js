@@ -2,19 +2,13 @@
 const path = require("path");
 const { search } = require("./utils/search");
 
+const axios = require("axios");
+
 // Requiring our custom middleware for checking if a user is logged in
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = app => {
   app.get("/", (req, res) => {
-    // If the user already has an account send them to the members page
-    if (req.user) {
-      res.redirect("/members");
-    }
-    res.sendFile(path.join(__dirname, "../public/signup.html"));
-  });
-
-  app.get("/home", (req, res) => {
     // This route for now is testing the handlebars files\
     search(req.query.searchValue).then(podcasts => {
       res.render("home", { podcasts: podcasts });
@@ -23,7 +17,19 @@ module.exports = app => {
 
   app.get("/collections", (req, res) => {
     // This route for now is testing the handlebars files
-    res.render("collections");
+    axios
+      .get("http://localhost:8080/api/collections")
+      .then(response => {
+        //console.log(response.data);
+        const result = response.data.map(collection => {
+          return collection;
+        });
+        res.render("collections", { collection: result });
+      })
+      .catch(error => {
+        // handle error
+        console.log(error);
+      });
   });
 
   app.get("/addCollectionForm", (req, res) => {
