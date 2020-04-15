@@ -25,14 +25,14 @@
                         <a href="/collections" class="block mt-4 lg:inline-block lg:mt-0 font-bold text-blue-700 hover:text-blue-900 mr-4">
                             Collections
                         </a>
-                        <a href="/signup" class="block mt-4 lg:inline-block lg:mt-0 font-bold bg-blue-500 hover:bg-blue-400 text-white px-5 rounded py-2 mr-4">
-                            SignUp
-                        </a>
-                        <a href="/signin" class="block mt-4 lg:inline-block lg:mt-0 font-bold bg-blue-500 hover:bg-blue-400 text-white px-5 rounded py-2 mr-4">
-                            Login
-                        </a>
                     </div>
-                    <div>
+                    <div class="flex items-center">
+                         <a href="/signin" id="signin" class="block mt-4 lg:mt-0 font-bold bg-blue-500 hover:bg-blue-400 text-white px-5 rounded py-2 mr-4">
+                            SignIn
+                        </a>
+                        <a href="/logout" id="logout" class="hidden mt-4 lg:mt-0 font-bold bg-blue-500 hover:bg-blue-400 text-white px-5 rounded py-2 mr-4">
+                            Logout
+                        </a>
                         <input class="block mt-4 lg:inline-block lg:mt-0 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="search" type="text" placeholder="Search for Podcasts" onchange="search()">
                     </div>
                 </div>
@@ -57,5 +57,10 @@
             });
         </script>
         <script type="text/javascript" src="js/postCollection.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-firestore.js"></script>
+        <script src="./js/authConfig.js"></script>
+        <script src="./js/auth.js"></script>
 	</body>
 </html>

@@ -8,7 +8,7 @@ function signup() {
 
   // sign up user
   auth.createUserWithEmailAndPassword(email, password).then(credentials => {
-    window.location.replace("/home");
+    window.location.replace("/");
     console.log("account created!");
     console.log(credentials);
   });
@@ -22,11 +22,23 @@ function login() {
 
   // sign in user
   auth.signInWithEmailAndPassword(email, password).then(credentials => {
-    window.location.replace("/home");
+    window.location.replace("/");
     console.log("Signed in!");
     console.log(credentials);
   });
 }
 
+function logout() {
+  auth()
+    .signOut()
+    .then(() => {
+      console.log("Signed out!");
+    })
+    .catch(error => {
+      console.log(error);
+    });
+}
+
 console.log(login);
 console.log(signup);
+console.log(logout);
