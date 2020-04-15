@@ -5,12 +5,15 @@ function signup() {
   // get user info
   const email = signupForm.email.value;
   const password = signupForm.password.value;
+  const userName = signupForm.username.value;
 
   // sign up user
   auth.createUserWithEmailAndPassword(email, password).then(credentials => {
     window.location.replace("/");
     console.log("account created!");
-    console.log(credentials);
+    console.log(credentials.displayName);
+    const user = firebase.auth().currentUser;
+    user.updateProfile({ displayName: userName });
   });
 }
 
@@ -30,8 +33,9 @@ function login() {
   });
 }
 
-firebase.auth().onAuthStateChanged(function(user) {
+firebase.auth().onAuthStateChanged(user => {
   if (user) {
+    console.log(user);
     // User is signed in.
     $("#signin")
       .removeClass("block")
@@ -39,6 +43,9 @@ firebase.auth().onAuthStateChanged(function(user) {
     $("#logout")
       .removeClass("hidden")
       .addClass("block");
+    $("#user-name")
+      .removeClass("hidden")
+      .html(`Welcome&nbsp;${user.displayName}`);
     // ...
   } else {
     // User is signed out.
@@ -49,6 +56,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     $("#logout")
       .removeClass("block")
       .addClass("hidden");
+    $("#user-name").addClass("hidden");
   }
 });
 
@@ -63,9 +71,6 @@ function logout() {
       console.log(error);
     });
 }
-
-const user = firebase.auth().currentUser;
-console.log(user);
 
 console.log(login);
 console.log(signup);
