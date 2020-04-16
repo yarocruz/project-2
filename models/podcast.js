@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-  const Review = sequelize.define("Review", {
-    collectionName: {
+  const Podcast = sequelize.define("Podcast", {
+    podcastTitle: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
@@ -20,18 +20,13 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
 
-  Review.associate = models => {
-    Review.belongsTo(models.Collection, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
-    Review.belongsTo(models.User, {
+  Podcast.associate = models => {
+    Podcast.belongsTo(models.Collection, {
       foreignKey: {
         allowNull: false
       }
     });
   };
 
-  return Review;
+  return Podcast;
 };

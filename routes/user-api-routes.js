@@ -10,14 +10,14 @@ const db = require("../models");
 
 // Routes
 // =============================================================
-module.exports = function(app) {
+module.exports = app => {
   // GET route for getting all of the users
   app.get("/api/users", (req, res) => {
     // Here we add an "include" property to our options in our findAll query
     // We set the value to an array of the models we want to include in a left outer join
     // In this case, just db.Collection and db.Reviews
     db.User.findAll({
-      include: [db.Collection, db.Review]
+      include: [db.Collection]
     }).then(dbUser => res.json(dbUser));
   });
 
@@ -30,7 +30,7 @@ module.exports = function(app) {
       where: {
         id: req.params.id
       },
-      include: [db.Collection, db.Review]
+      include: [db.Collection, db.Podcast]
     }).then(dbUser => res.json(dbUser));
   });
 
