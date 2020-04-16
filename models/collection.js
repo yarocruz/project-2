@@ -1,13 +1,6 @@
-module.exports = function(sequelize, DataTypes) {
+module.exports = (sequelize, DataTypes) => {
   var Collection = sequelize.define("Collection", {
     collectionTitle: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1]
-      }
-    },
-    podcastTitle: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
@@ -16,8 +9,8 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
-  Collection.associate = function(models) {
-    Collection.hasMany(models.Review, {
+  Collection.associate = models => {
+    Collection.hasMany(models.Podcast, {
       onDelete: "cascade"
     });
     Collection.belongsTo(models.User, {

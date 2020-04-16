@@ -13,7 +13,9 @@ var db = require("../models");
 module.exports = app => {
   // GET route for getting all of the collections
   app.get("/api/collections", (req, res) => {
-    db.Collection.findAll({}).then(dbCollection => res.json(dbCollection));
+    db.Collection.findAll({
+      include: [db.Podcast]
+    }).then(dbCollection => res.json(dbCollection));
   });
 
   // Get route for retrieving a single collection
