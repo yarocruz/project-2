@@ -55,7 +55,9 @@ firebase.auth().onAuthStateChanged(user => {
     console.log(user);
     $.ajax("api/users").then(response => {
       console.log(response);
-      const loggedIn = response.filter(user => user.email === firebase.auth().currentUser.email);
+      const loggedIn = response.filter(
+        user => user.email === firebase.auth().currentUser.email
+      );
       console.log(loggedIn);
       // User is signed in.
       $("#signin")
@@ -66,7 +68,9 @@ firebase.auth().onAuthStateChanged(user => {
         .addClass("block");
       $("#user-name")
         .removeClass("hidden")
-        .html(`<span data-value="${loggedIn[0].id}">Welcome&nbsp;${user.displayName}</span>`);
+        .html(
+          `<span data-value="${loggedIn[0].id}">Welcome&nbsp;${user.displayName}</span>`
+        );
       // ...
       console.log($("span").attr("data-value"));
     });
@@ -82,7 +86,6 @@ firebase.auth().onAuthStateChanged(user => {
     $("#user-name").addClass("hidden");
   }
 });
-
 
 function logout() {
   firebase

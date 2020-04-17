@@ -8,7 +8,6 @@ $("#saveCollection").on("click", event => {
   console.log("You clicked me!");
   console.log(collectionData);
 
-
   $.ajax("api/collections", {
     method: "POST",
     data: collectionData
@@ -26,11 +25,5 @@ $("#saveCollection").on("click", event => {
     }).then(() => {
       console.log("Created podcast data");
     });
-    $.ajax("api/collections", (req, res) => {
-    }).then((res) => {
-      console.log(res.id);
-
-    })
-    //console.log(podcastData);
   });
 });
