@@ -31,6 +31,9 @@ module.exports = app => {
   app.post("/api/collections", (req, res) => {
     db.Collection.create(req.body).then(dbCollection => res.json(dbCollection));
   });
+  app.post("/api/podcast", (req, res) => {
+    db.Podcast.create(req.body).then(dbPodcast => res.json(dbPodcast));
+  });
 
   // DELETE route for deleting a collection
   app.delete("/api/collections/:id", (req, res) => {

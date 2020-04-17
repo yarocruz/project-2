@@ -40,7 +40,9 @@ module.exports = (sequelize, DataTypes) => {
   User.associate = models => {
     // Associating User with Collections
     User.hasMany(models.Collection, {
-      onDelete: "cascade"
+      foreignKey: {
+        allowNull: false
+      }
     });
   };
   return User;

@@ -13,7 +13,24 @@ function signup() {
     console.log("account created!");
     console.log(credentials.displayName);
     const user = firebase.auth().currentUser;
+    console.log(user);
     user.updateProfile({ displayName: userName });
+
+    // POSTING USER DATA TO DATABASE
+    const userData = {
+      email: user.email,
+      password: user.uid,
+      username: user.displayName
+    };
+
+    $.ajax("api/users", {
+      method: "POST",
+      data: userData
+    }).then(response => {
+      console.log(response);
+      console.log("Created user data");
+    });
+    // POSTING USER DATA TO DATABASE
   });
 }
 
@@ -36,17 +53,23 @@ function login() {
 firebase.auth().onAuthStateChanged(user => {
   if (user) {
     console.log(user);
-    // User is signed in.
-    $("#signin")
-      .removeClass("block")
-      .addClass("hidden");
-    $("#logout")
-      .removeClass("hidden")
-      .addClass("block");
-    $("#user-name")
-      .removeClass("hidden")
-      .html(`Welcome&nbsp;${user.displayName}`);
-    // ...
+    $.ajax("api/users").then(response => {
+      console.log(response);
+      const loggedIn = response.filter(user => user.email === firebase.auth().currentUser.email);
+      console.log(loggedIn);
+      // User is signed in.
+      $("#signin")
+        .removeClass("block")
+        .addClass("hidden");
+      $("#logout")
+        .removeClass("hidden")
+        .addClass("block");
+      $("#user-name")
+        .removeClass("hidden")
+        .html(`<span data-value="${loggedIn[0].id}">Welcome&nbsp;${user.displayName}</span>`);
+      // ...
+      console.log($("span").attr("data-value"));
+    });
   } else {
     // User is signed out.
     // ...
@@ -59,6 +82,7 @@ firebase.auth().onAuthStateChanged(user => {
     $("#user-name").addClass("hidden");
   }
 });
+
 
 function logout() {
   firebase

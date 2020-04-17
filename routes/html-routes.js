@@ -18,9 +18,7 @@ module.exports = app => {
       },
       include: [db.Podcast]
     }).then(dbCollection => {
-      console.log(dbCollection);
       const oneCollection = dbCollection.toJSON();
-      console.log(oneCollection);
       res.render("oneCollection", { oneCollection });
     });
   });
@@ -31,7 +29,7 @@ module.exports = app => {
       include: [db.User]
     }).then(dbCollections => {
       const collections = dbCollections.map(collection => collection.toJSON());
-      console.log(collections);
+      //console.log(collections);
       res.render("collections", { collections });
     });
   });
