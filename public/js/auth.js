@@ -15,12 +15,12 @@ function signup() {
     const user = firebase.auth().currentUser;
     console.log(user);
     user.updateProfile({ displayName: userName });
-
+    console.log(userName);
     // POSTING USER DATA TO DATABASE
     const userData = {
       email: user.email,
       password: user.uid,
-      username: user.displayName
+      username: userName
     };
 
     $.ajax("api/users", {
