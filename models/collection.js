@@ -10,10 +10,12 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Collection.associate = models => {
-    Collection.hasMany(models.Podcast, {
-      onDelete: "cascade"
-    });
     Collection.belongsTo(models.User, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+    Collection.hasMany(models.Podcast, {
       foreignKey: {
         allowNull: false
       }
