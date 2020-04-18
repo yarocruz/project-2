@@ -24,6 +24,7 @@ $("#saveCollection").on("click", event => {
       data: podcastData
     }).then(() => {
       console.log("Created podcast data");
+      window.location.replace("/collections");
     });
   });
 });

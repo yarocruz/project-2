@@ -19,7 +19,7 @@ module.exports = {
   },
   production: {
     // may change later
-    useEnvVariable: "blah",
+    use_env_variable: "JAWSDB_URL",
     dialect: "mysql"
   }
 };
