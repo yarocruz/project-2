@@ -34,7 +34,8 @@ function search(value = "") {
             description: resp.description_original,
             itunes: resp.itunes_id,
             RSS: resp.rss,
-            link: resp.website
+            link: resp.website,
+            id: i
           };
           podcasts.push(pc);
         }
