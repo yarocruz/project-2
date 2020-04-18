@@ -72,7 +72,6 @@ firebase.auth().onAuthStateChanged(user => {
           `<span data-value="${loggedIn[0].id}">Welcome&nbsp;${user.displayName}</span>`
         );
       // ...
-      console.log($("span").attr("data-value"));
     });
   } else {
     // User is signed out.
