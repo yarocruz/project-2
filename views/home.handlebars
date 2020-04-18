@@ -5,7 +5,7 @@
         <div class="md:max-w-sm flex flex-col items-center rounded overflow-hidden shadow-lg hover:shadow-xl">
             <img class="w-32 mt-4" src="{{image}}" alt="Sunset in the mountains">
             <div class="px-6 py-4">
-                <div class="font-bold text-xl text-center mb-2">{{title}}</div>
+                <div class="podcast-title font-bold text-xl text-center mb-2" >{{title}}</div>
                 <p class="description">{{description}}</p>
             </div>
             <div>
@@ -14,7 +14,7 @@
                 <span class="inline-block px-1 py-1 text-sm font-semibold text-blue-700 hover:text-blue-900"><a href="{{link}}">Website</a></span>
             </div>
 
-            <a href="/addCollectionForm" class="transition duration-500 ease-in-out cursor-pointer rounded bg-blue-500 hover:bg-blue-400 px-3 py-1 my-4 text-white text-sm">Add to Collection</a>
+            <a href="/addCollectionForm" class="addToCollectionBtn transition duration-500 ease-in-out cursor-pointer rounded bg-blue-500 hover:bg-blue-400 px-3 py-1 my-4 text-white text-sm">Add to Collection</a>
         </div>
         {{/each}}
     </div>
