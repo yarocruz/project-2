@@ -3,6 +3,7 @@ const express = require("express");
 const session = require("express-session");
 const exphbs = require("express-handlebars");
 const bodyParser = require("body-parser");
+const compression = require("compression");
 
 require("dotenv").config();
 
@@ -15,6 +16,7 @@ const db = require("./models");
 
 // Creating express app and configuring middleware needed for authentication
 const app = express();
+app.use(compression());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
@@ -25,6 +27,7 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
